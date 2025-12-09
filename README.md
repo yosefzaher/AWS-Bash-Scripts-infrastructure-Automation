@@ -86,7 +86,8 @@ Located in: `EC2/`
     *   **Cleanup**: Includes commands to terminate instances and delete security groups.
 *   **`EC2_Run_New_Insatance.sh`**: Simplified script for launching new instances quickly.
 *   **`Instance_From_LaunchTemplate.sh`**: Launches instances based on pre-defined Launch Templates for consistency.
-*   **`User_Data_Script_HTTP_Service.sh`**: A startup script (User Data) to install and configure an Apache HTTP server automatically upon boot.
+*   **`User_Data_Script_HTTP_Service.sh`**: A startup script (User Data) that installs the **.NET 8.0 SDK**, clones a custom repository, and sets up a systemd service to run a .NET HTTP server on **port 8002**.
+*   **`ApacheServer_UserData_Script.sh`**: Similar to the above, but specifically tailored for Amazon Linux (uses `dnf`), installing Apache and creating a styled HTML page with server info.
 
 ### 4. Elastic Load Balancing (ELB)
 Located in: `ELB/`
