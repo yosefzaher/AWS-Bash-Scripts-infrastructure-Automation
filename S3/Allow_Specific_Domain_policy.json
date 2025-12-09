@@ -1,0 +1,16 @@
+{
+  "Version":"2012-10-17",
+  "Id":"Allow vertechx-demo.netlify.app to access the images",
+  "Statement":[
+    {
+      "Sid":"Allow only GET requests originating from specific domain",
+      "Effect":"Allow",
+      "Principal":"*",
+      "Action":["s3:GetObject"],
+      "Resource":"arn:aws:s3:::test-zaher-s3-bucket/*.jpg",
+      "Condition":{
+        "StringLike":{"aws:Referer":["https://vertechx-demo.netlify.app/*"]}
+      }
+    }
+  ]
+}

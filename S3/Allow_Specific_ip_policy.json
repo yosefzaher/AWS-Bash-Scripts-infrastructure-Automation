@@ -1,0 +1,20 @@
+{
+    "Version": "2012-10-17",
+    "Id": "Allow specific IP",
+    "Statement": [
+        {
+            "Sid": "IPAllow",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::test-zaher-s3-bucket/*"
+            ],
+            "Condition": {
+                "IpAddress": {
+                    "aws:SourceIp": "156.197.175.180"
+                }
+            }
+        }
+    ]
+}
