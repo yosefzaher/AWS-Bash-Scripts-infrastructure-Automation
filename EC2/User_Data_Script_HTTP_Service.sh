@@ -1,7 +1,8 @@
 #!/bin/bash
 
-apt update
+sudo -u ubuntu 
 
+apt update
 echo "install dotnet"
 apt install -y aspnetcore-runtime-8.0
 apt install -y dotnet-sdk-8.0
@@ -13,7 +14,7 @@ git config --global user.email "zaheryosef72@gmail.com"
 
 cd /home/ubuntu
 echo "git clone"
-sudo -u ubuntu git clone https://github.com/yosefzaher/dot-net-http-server.git
+git clone https://github.com/yosefzaher/dot-net-http-server.git
 cd dot-net-http-server
 
 #build the dot net service
