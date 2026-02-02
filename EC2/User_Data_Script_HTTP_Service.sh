@@ -12,7 +12,7 @@ apt install git -y
 git config --global user.name "yosef zaher"
 git config --global user.email "zaheryosef72@gmail.com"
 
-cd /home/ubuntu
+cd /home/ubuntu 
 echo "git clone"
 git clone https://github.com/yosefzaher/dot-net-http-server.git
 cd dot-net-http-server
