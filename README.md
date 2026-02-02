@@ -97,6 +97,36 @@ Located in: `ELB/`
     *   Creates a **Target Group** and registers EC2 instances.
     *   Creates a **Listener** to forward HTTP traffic from the ALB to the Target Group.
 
+### 4.1 Auto Scaling Group (ASG)
+Located in: `ASG/`
+
+*   **`ASG.sh`**: Script for automated deployment of a complete Auto Scaling Group (ASG) architecture:
+    *   Retrieves VPC, Subnet, and Security Group IDs by name.
+    *   Creates a **Network Load Balancer (NLB)** and attaches it to the specified subnets and security group.
+    *   Creates a **Target Group** (TCP protocol, customizable port) and links it to the NLB.
+    *   Sets up a **Listener** to forward traffic from the NLB to the Target Group.
+    *   Provisions an **Auto Scaling Group** using a Launch Template, attaches it to the Target Group, and configures health checks and scaling parameters (min/max/desired size).
+    *   Attaches a **Target Tracking Scaling Policy** (CPU-based) to the ASG for automatic scaling.
+    *   All resource names, ports, and scaling parameters are easily customizable via variables at the top of the script.
+    *   Logs progress and errors for easier troubleshooting.
+
+> **Note:** Before running, ensure all referenced resources (VPC, subnets, security group, launch template) exist and their names match the variables in the script.
+
+### 4.2 Load Testing with k6
+Located in: `k6 Load Test/`
+
+*   **`script.js`**: Automated load testing script using [k6](https://k6.io/):
+    *   Simulates traffic to the HTTP service behind the NLB (Network Load Balancer).
+    *   Defines multiple stages with increasing and decreasing numbers of virtual users to test scalability and performance.
+    *   Sends HTTP GET requests to the NLB endpoint (replace with your actual DNS if needed).
+    *   Includes customizable sleep intervals between requests.
+    *   Useful for stress-testing the Auto Scaling Group and validating scaling policies.
+
+> **Usage:**
+> 1. Install k6: https://k6.io/docs/getting-started/installation/
+> 2. Run the test: `k6 run script.js`
+> 3. Adjust the endpoint URL and stages as needed for your environment.
+
 ### 5. Route 53
 Located in: `Route53/`
 
